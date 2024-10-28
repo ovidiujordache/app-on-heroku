@@ -1,0 +1,19 @@
+.cart-button {
+  position: relative; /* Position for the count badge */
+}
+
+.cart-icon {
+
+  font-size: 22px; /* Size of the cart icon */
+}
+
+.cart-count {
+ /* position: absolute;*/
+  /*top: -5px;*/
+ /* right: -10px;*/
+  background-color: #dc3545; /* Red background for the count badge */
+  color: white;
+  border-radius: 70%;
+  padding: 3px 6px; /* Padding for the badge */
+  font-size: 14px; /* Font size for the count */
+}
