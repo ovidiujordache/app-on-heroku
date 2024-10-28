@@ -78,40 +78,6 @@ const App = () => {
                 </Router>
             </CartProvider>
 
-        <CartProvider>
-        <Router>
-            <div className="App">
-                <Header />
-                <main>
-                    <Routes>
-                        <Route path="/" element={
-                            <Home 
-                                setSearchTerm={setSearchTerm} 
-                                setCategory={setCategory}
-                            />
-                        } />
-                        <Route path="/buy" element={
-                            <Buy
-                                products={filteredProducts}
-                                setSearchTerm={setSearchTerm}
-                                setCategory={setCategory}
-                            />
-                        } />
-
-                        <Route path="/sell" element={<Sell />} />
-                        <Route path="/account" element={<Account />} />
-                        <Route path="/accountsettings" element={<AccountSettings />} />
-                        <Route path="/watching" element={<Watching />} />
-                        <Route path="/cart" element={<Cart />} />
-                    </Routes>
-                </main>
-                <Footer />
-            </div>
-        </Router>
-        </CartProvider>
-
-        </UserProvider>
-    );
 };
 
 export default App;
