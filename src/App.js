@@ -77,7 +77,9 @@ const App = () => {
                     </div>
                 </Router>
             </CartProvider>
+              </UserProvider>
 
+    );
 };
 
 export default App;
