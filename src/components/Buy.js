@@ -11,7 +11,7 @@ const Buy = ({ products, searchTerm, setSearchTerm, category, setCategory }) => 
                 category={category} 
                 setCategory={setCategory} 
             />
-            <ProductList products={products} />
+            <ProductList products={products} category={category} />
         </div>
     );
 };

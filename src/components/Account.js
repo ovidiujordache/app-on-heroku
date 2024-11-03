@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import { useUserContext } from '../ContextProviders/UserContext'; 
-
 import { useNavigate } from 'react-router-dom'; 
+
 const Account = () => {
-      const navigate = useNavigate(); 
-    const { login, logout } = useUserContext();  
-    const [isLogin, setIsLogin] = useState(false); 
+    const navigate = useNavigate(); 
+
+//context values
+    const { login, register } = useUserContext();  
+    const {user} = useUserContext();  
+
+
+
+
+//form values 
+    const [isLogin, setIsLogin] = useState(true); 
     const [username, setUsername] = useState(''); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,26 +25,32 @@ const Account = () => {
         setPassword(''); 
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (isLogin) {
-           
-            login(email, password);
-              if (email) { 
-
-        navigate('/buy'); 
-      }
+const handleSubmit = async (e) => {
+    console.log("handle submit:")
+    e.preventDefault();
+    if (isLogin) {
+       
+        await login(email, password);
+   
+        if (user) {
+            navigate('/dashboard');
         } else {
-          
-            console.log('Register submitted:', { username, email, password });
-         
+            console.error("Login failed: user is null.");
         }
-    };
+    } else {
+     
+        await register(username, email, password);
+      
+        if (user) {
+            navigate('/dashboard');
+        }
+    }
+};
 
     return (
         <div className="auth-container">
             <form className="auth-form" onSubmit={handleSubmit}>
-                <h2>{isLogin ? 'Login' : 'Register Not Implemented'}</h2>
+                <h2>{isLogin ? 'Login' : 'Register'}</h2>
 
                 {!isLogin && (
                     <div className="form-group">
@@ -75,7 +89,7 @@ const Account = () => {
                 <p>
                     {isLogin ? "Don't have an account?" : 'Already have an account?'}
                     <button type="button" onClick={handleToggle} className="toggle-btn">
-                        {isLogin ? 'Register here/ Not Implemented' : 'Login here'}
+                        {isLogin ? 'Register here' : 'Login here'}
                     </button>
                 </p>
             </form>
