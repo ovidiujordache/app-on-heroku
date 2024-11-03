@@ -8,11 +8,12 @@ export const useUserContext = () => {
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-const baseURL = 'http://localhost:5000';
+const baseURL_Local = 'http://localhost:5000';
 
+const baseURL_Remote='https://heroku-api-server-99374844be5f.herokuapp.com'
 const login = async (email, password) => {
     try {
-        const response = await fetch(`${baseURL}/auth/login`, {
+        const response = await fetch(`${baseURL_Remote}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ customeremail: email, password }),
@@ -36,7 +37,7 @@ const login = async (email, password) => {
   
 const register = async (username, email, password) => {
     try {
-        const response = await fetch(`${baseURL}/auth/register`, {
+        const response = await fetch(`${baseURL_Remote}/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ customername: username, customeremail: email, password }),
